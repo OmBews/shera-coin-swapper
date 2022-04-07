@@ -7,14 +7,14 @@ import v1Abi from './../abi/sheraV1.json';
 import v2Abi from './../abi/sheraV2.json';
 import swapperAbi from './../abi/sheraSwapper.json';
 
-const SheraV1Address= "0xA632d56b856d5933e6Ab96cF030428D8D443fDE9";
-const SheraV2Address = "0x209C468504129754c1EFe73340D5392a6f9dD10E";
-const SwapperAddress = "0x66fDc060dA126E784d5363bC0296199346E4E9dd";
+const SheraV1Address= "0x92394b8b2f06444D1eAA4F791AA5312baC8E0Cb6";
+const SheraV2Address = "0x087012cA57A9524B2ab67b9bC606dbabD0223B96";
+const SwapperAddress = "0xA3716B53031f97b1281a9b6369cd95985130Fa88";
 
 
 
 
-const StartScreen = () => {
+const StartScreen = ({setError, setErrorMsg}) => {
 
     const { account,
         blockchainData,
@@ -41,7 +41,8 @@ const StartScreen = () => {
                     'swap_contract': SheraSwapContract
                 })
             } catch(e) {
-                console.log(e)
+                setError(true)
+                setErrorMsg('Contract not deployed to current network, please change network in MetaMask')
             }
         }
     }

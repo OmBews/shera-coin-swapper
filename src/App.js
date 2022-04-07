@@ -20,7 +20,7 @@ function App() {
   return (
     <GlobalProvider>
       {!nextScreen ? (<Main setNextScreen={setNextScreen} />) : (
-        <StartScreen />
+        <StartScreen setError={setError} setErrorMsg={setErrorMsg} />
       )}
       {error && (
         <p className="text-red-600 text-xl text-center">{errMsg}</p>
