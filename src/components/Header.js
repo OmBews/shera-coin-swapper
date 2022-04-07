@@ -9,6 +9,7 @@ const HeaderComponent = () => {
     const { account, addAccount } = useContext(GlobalContext);
 
     const connectWallet = async () => {
+        console.log("adsasd")
         if (!window.ethereum) {
             alert('Please install MetaMask');
             return

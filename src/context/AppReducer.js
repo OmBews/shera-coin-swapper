@@ -3,12 +3,25 @@ export const AppReducer = (state, action) => {
         case 'DELETE_ACCOUNT':
             return {
                 ...state,
-                account: null
+                account: null,
+                blockchainData: null
             }
         case 'ADD_ACCOUNT':
             return {
                 ...state,
                 account: action.payload
+            }
+
+        case 'LOAD_OLD_TOKENS': 
+            return {
+                ...state, 
+                blockchainData: action.payload
+            }
+        
+        case 'NETWORK': 
+            return {
+                ...state,
+                network: action.payload
             }
         default:
             return state;
