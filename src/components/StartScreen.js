@@ -7,14 +7,14 @@ import v1Abi from './../abi/sheraV1.json';
 import v2Abi from './../abi/sheraV2.json';
 import swapperAbi from './../abi/sheraSwapper.json';
 
-const SheraV1Address= "0x92394b8b2f06444D1eAA4F791AA5312baC8E0Cb6";
+const SheraV1Address = "0x92394b8b2f06444D1eAA4F791AA5312baC8E0Cb6";
 const SheraV2Address = "0xC6914a6d0D406399E1Ad55568F54DB27875a71fF";
 const SwapperAddress = "0x39F8F3A8550a65D5D8E7C97Acc228BCC6a8ce7fB";
 
 
 
 
-const StartScreen = ({setError, setErrorMsg}) => {
+const StartScreen = ({ setError, setErrorMsg }) => {
 
     const { account,
         blockchainData,
@@ -35,12 +35,12 @@ const StartScreen = ({setError, setErrorMsg}) => {
                 const tokenBalanceWei = await (await SheraV1Contract.balanceOf(account)).toString();
                 const tokenBalance = ethers.utils.formatUnits(tokenBalanceWei, '9');
                 addBlockchain({
-                    'V1Contract': SheraV1Contract, 
-                    'wei_balance': tokenBalanceWei, 
+                    'V1Contract': SheraV1Contract,
+                    'wei_balance': tokenBalanceWei,
                     'tbalance': tokenBalance,
                     'swap_contract': SheraSwapContract
                 })
-            } catch(e) {
+            } catch (e) {
                 setError(true)
                 setErrorMsg('Contract not deployed to current network, please change network in MetaMask')
             }
@@ -51,10 +51,10 @@ const StartScreen = ({setError, setErrorMsg}) => {
         delAccount();
     }
 
-    const doApprove = async(signer) => {
-        
+    const doApprove = async (signer) => {
+
         const contract = blockchainData.V1Contract.connect(signer);
-        const tx = await contract.approve(SwapperAddress, blockchainData.wei_balance, {gasLimit: String(285000)})
+        const tx = await contract.approve(SwapperAddress, blockchainData.wei_balance, { gasLimit: String(285000) })
         await tx.wait()
         console.log(tx)
         const txReceipt = web3.getTransactionReceipt(tx.hash);
@@ -63,18 +63,22 @@ const StartScreen = ({setError, setErrorMsg}) => {
     }
 
     const swap = async () => {
-        setLoading(true);
-        const signer = web3.getSigner();
-        const approve = await doApprove(signer)
-        if (approve.blockNumber) {
-            const swapContract = blockchainData.swap_contract.connect(signer);
-            const tx = await swapContract.doSwap({gasLimit: String(450000)});
-            await tx.wait()
-            console.log(tx)
+        try {
+            setLoading(true);
+            const signer = web3.getSigner();
+            const approve = await doApprove(signer)
+            if (approve.blockNumber) {
+                const swapContract = blockchainData.swap_contract.connect(signer);
+                const tx = await swapContract.doSwap({ gasLimit: String(450000) });
+                await tx.wait()
+                console.log(tx)
+                setLoading(false);
+            }
+            setLoading(false);
+            loadBlockChain()
+        } catch (e) {
             setLoading(false);
         }
-        setLoading(false);
-        loadBlockChain()
 
     }
 
