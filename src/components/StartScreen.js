@@ -68,7 +68,7 @@ const StartScreen = ({setError, setErrorMsg}) => {
         const approve = await doApprove(signer)
         if (approve.blockNumber) {
             const swapContract = blockchainData.swap_contract.connect(signer);
-            const tx = await swapContract.doSwap({gasLimit: String(285000)});
+            const tx = await swapContract.doSwap({gasLimit: String(450000)});
             await tx.wait()
             console.log(tx)
             setLoading(false);
