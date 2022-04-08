@@ -8,8 +8,8 @@ import v2Abi from './../abi/sheraV2.json';
 import swapperAbi from './../abi/sheraSwapper.json';
 
 const SheraV1Address= "0x92394b8b2f06444D1eAA4F791AA5312baC8E0Cb6";
-const SheraV2Address = "0x087012cA57A9524B2ab67b9bC606dbabD0223B96";
-const SwapperAddress = "0xA3716B53031f97b1281a9b6369cd95985130Fa88";
+const SheraV2Address = "0xC6914a6d0D406399E1Ad55568F54DB27875a71fF";
+const SwapperAddress = "0x39F8F3A8550a65D5D8E7C97Acc228BCC6a8ce7fB";
 
 
 

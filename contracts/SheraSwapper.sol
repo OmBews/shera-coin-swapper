@@ -31,6 +31,14 @@ contract SheeraSwapper is Ownable {
 
     }
 
+    function setOldSheraContract(address _sheraV1) public onlyOwner {
+        _sheera_v1 = ERC20(_sheraV1);
+    } 
+
+    function setNewSheraContract(address _sheraV2) public onlyOwner {
+        _sheera_v2 = ERC20(_sheraV2);
+    } 
+
 
 
     /* Accept ETH deposits */
