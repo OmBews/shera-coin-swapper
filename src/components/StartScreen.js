@@ -17,7 +17,8 @@ import swapperAbi from './../abi/sheraSwapper.json';
 // mainnet Addresses
 const SheraV1Address = "0x029E391FC9fbE3183ecCaDBDd029149B49B1dbC5";
 const SheraV2Address = "0x9DAd3A600e7fD63Fbaf2DbAA429F2200d03Aa648";
-const SwapperAddress = "0xf73B08cc165d37d0f97afF4A40A8009D0d8Fd23b";
+const SwapperAddress = "0x64953CB1E2099Ae138908f02697f9d4A208c3925";
+// const SwapperAddress = "0xf73B08cc165d37d0f97afF4A40A8009D0d8Fd23b";
 
 
 
