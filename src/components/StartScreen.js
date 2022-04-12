@@ -9,15 +9,17 @@ import swapperAbi from './../abi/sheraSwapper.json';
 
 
 // Testnet Addresses
-// const SheraV1Address = "0x57D49F45cDa8FD39586313dc260ba752ACD1D316";
-// const SheraV2Address = "0xE38d69cd47ffE1966599CBC6BfE46c04EC4256F3";
-// const SwapperAddress = "0x5ca6D76089525f7bdCa2e1B52280ab3F41B48bec";
+const SheraV1Address = "0x74330107edCD78ec265138587E9df38243450161";
+const SheraV2Address = "0xBc5115A3A5EA6503FABbb4af8BeD52527bD52717";
+const SwapperAddress = "0xF92e89f4182C7f95f0D33530c7E0E7b7c9d6FB2b";
 
 
 // mainnet Addresses
-const SheraV1Address = "0x029E391FC9fbE3183ecCaDBDd029149B49B1dbC5";
-const SheraV2Address = "0x9DAd3A600e7fD63Fbaf2DbAA429F2200d03Aa648";
-const SwapperAddress = "0x64953CB1E2099Ae138908f02697f9d4A208c3925";
+// const SheraV1Address = "0x029E391FC9fbE3183ecCaDBDd029149B49B1dbC5";
+// const SheraV2Address = "0xCd275450b516Eed6ddFfCdF76168e66f9a8ADb44";
+// const SwapperAddress = "0x64953CB1E2099Ae138908f02697f9d4A208c3925";
+
+
 // const SwapperAddress = "0xf73B08cc165d37d0f97afF4A40A8009D0d8Fd23b";
 
 
