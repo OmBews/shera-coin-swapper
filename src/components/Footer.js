@@ -2,7 +2,7 @@
 const Footer = () => {
 
     return (
-        <footer className="text-gray-600 body-font mt-3 w-full">
+        <footer className="text-gray-600 body-font mt-3 w-full bottom-0 sticky">
             <div className="bg-black ">
                 <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row justify-between">
                     <p className="text-gray-500 text-sm text-center sm:text-left">© {new Date().getFullYear()} Shera Tokens 

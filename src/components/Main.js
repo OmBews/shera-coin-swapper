@@ -2,7 +2,7 @@ import logo from './../assets/shera-logo.svg';
 
 const Main = ({setNextScreen}) => {
     return (
-        <div className="container mx-auto text-white min-h-screen flex items-center">
+        // <div className="container mx-auto text-white min-h-screen flex items-center">
             <div className="flex items-center flex-col w-full">
                 <div className="mx-auto p-4 max-w-xs">
                     <img className='w-4/5 mx-auto' src={logo} alt="Shera tokens" />
@@ -31,7 +31,7 @@ const Main = ({setNextScreen}) => {
                 </div>
             </div>
 
-        </div>
+        // </div>
     )
 }
 
