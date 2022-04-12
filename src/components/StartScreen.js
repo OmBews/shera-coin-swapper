@@ -1,4 +1,4 @@
-import logo from './../assets/logo.png';
+import logo from './../assets/shera-logo.svg';
 import { ethers } from "ethers";
 import { useContext, useEffect, useState } from "react";
 import Web3Modal from 'web3modal';
@@ -7,9 +7,9 @@ import v1Abi from './../abi/sheraV1.json';
 import v2Abi from './../abi/sheraV2.json';
 import swapperAbi from './../abi/sheraSwapper.json';
 
-const SheraV1Address = "0x92394b8b2f06444D1eAA4F791AA5312baC8E0Cb6";
-const SheraV2Address = "0xC6914a6d0D406399E1Ad55568F54DB27875a71fF";
-const SwapperAddress = "0x39F8F3A8550a65D5D8E7C97Acc228BCC6a8ce7fB";
+const SheraV1Address = "0x029E391FC9fbE3183ecCaDBDd029149B49B1dbC5";
+const SheraV2Address = "0x9DAd3A600e7fD63Fbaf2DbAA429F2200d03Aa648";
+const SwapperAddress = "0xf73B08cc165d37d0f97afF4A40A8009D0d8Fd23b";
 
 
 
@@ -82,6 +82,37 @@ const StartScreen = ({ setError, setErrorMsg }) => {
 
     }
 
+    const addToken = async () => {
+        const tokenAddress = SheraV2Address;
+        const tokenSymbol = 'SHR';
+        const tokenDecimals = 9;
+        const tokenImage = '';
+
+        try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await window.ethereum.request({
+                method: 'wallet_watchAsset',
+                params: {
+                    type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                    options: {
+                        address: tokenAddress, // The address that the token is at.
+                        symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+                        decimals: tokenDecimals, // The number of decimals in the token
+                        image: tokenImage, // A string url of the token logo
+                    },
+                },
+            });
+
+            if (wasAdded) {
+                console.log('Thanks for your interest!');
+            } else {
+                console.log('Your loss!');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const connectWallet = async () => {
         if (!window.ethereum) {
             alert('Please install MetaMask');
@@ -114,16 +145,22 @@ const StartScreen = ({ setError, setErrorMsg }) => {
         <div className="container mx-auto text-white min-h-screen flex items-center">
             <div className="flex items-center flex-col w-full">
                 <div className="max-w-xs mx-auto p-2">
-                    <img src={logo} alt="Shera tokens" />
+                    <img className='w-4/5 mx-auto' src={logo} alt="Shera tokens" />
                 </div>
                 {
                     blockchainData && (
-                        <div className='mb-3 px-4 py-4 bg-gray-900 mx-2'>
-                            <p className='text-center text-xl'>Shera Old Token Balance: {blockchainData.tbalance} SHR</p>
-                            <button disabled={(parseInt(blockchainData.tbalance) === 0 || loading === true)} className="btn-grad mt-4 mx-auto px-8 py-1" onClick={() => swap()}>Swap</button>
+                        <div>
+                            <div className='mb-3 px-4 py-4 bg-gray-900 mx-2'>
+                                <p className='text-center text-xl'>Shera Old Token Balance: {blockchainData.tbalance} SHR</p>
+                                <div className='flex justify-between items-center flex-col'>
+                                    <button disabled={(parseInt(blockchainData.tbalance) === 0 || loading === true)} className="btn-grad mt-4 px-8 py-1" onClick={() => swap()}>Swap</button>
+                                    <button className="btn-grad mt-4 px-8 py-1" onClick={() => addToken()}>Add New Shera Token To Your Metamask</button>
+                                </div>
+                            </div>
                         </div>
                     )
                 }
+
                 <div className="p-4">
                     <div className="max-w-xs mx-auto">
                         {account ? (
