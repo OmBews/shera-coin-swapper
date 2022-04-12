@@ -1,11 +1,11 @@
 import metamaskIcon from './../assets/metamask.svg'
 
 // Testnet Addresses
-const SheraV2Address = "0xBc5115A3A5EA6503FABbb4af8BeD52527bD52717";
+// const SheraV2Address = "0xBc5115A3A5EA6503FABbb4af8BeD52527bD52717";
 
 
 // mainnet Addresses
-// const SheraV2Address = "0xCd275450b516Eed6ddFfCdF76168e66f9a8ADb44";
+const SheraV2Address = "0xCd275450b516Eed6ddFfCdF76168e66f9a8ADb44";
 
 function Topbar() {
 
