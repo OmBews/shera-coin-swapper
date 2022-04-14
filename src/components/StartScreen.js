@@ -37,6 +37,7 @@ const StartScreen = ({ setError, setErrorMsg }) => {
 
     const [web3, setWeb3] = useState(null);
     const [loading, setLoading] = useState(false);
+    const stopSwapping = true;
 
     const loadBlockChain = async () => {
         if (web3 && account) {
@@ -132,7 +133,11 @@ const StartScreen = ({ setError, setErrorMsg }) => {
                         <div className='mb-3 px-4 py-4 bg-gray-900 mx-2'>
                             <p className='text-center text-xl'>Shera Old Token Balance: {blockchainData.tbalance} SHR</p>
                             <div className='flex justify-between items-center flex-col'>
-                                <button disabled={(parseInt(blockchainData.tbalance) === 0 || loading === true)} className="btn-grad mt-4 px-8 py-1" onClick={() => swap()}>Swap</button>
+                                {!stopSwapping ? (
+                                    <button disabled={(parseInt(blockchainData.tbalance) === 0 || loading === true)} className="btn-grad mt-4 px-8 py-1" onClick={() => swap()}>Swap</button>
+                                ) : (
+                                    <p className='mt-5 text-red-700'>Swap time is over</p>
+                                )}
                             </div>
                         </div>
                     </div>
